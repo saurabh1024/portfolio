@@ -3,6 +3,7 @@ import { useState } from 'react'
 import {HiOutlineMail} from 'react-icons/hi'
 import {BsFillPersonFill} from 'react-icons/bs'
 import { Link } from 'react-scroll'
+const genericHamburgerLine = `h-[2px] w-6 my-1 rounded-full bg-white transition ease transform duration-300`;
 
 const Navbar = () => {
     const [nav, setNav] = useState(false)
@@ -46,9 +47,33 @@ const Navbar = () => {
            
       
         {/* hamburger */}
-        <div onClick={onToggle} className='md:hidden z-10'>
-            {!nav? <FaBars/> : <FaTimes/>}
+        <div onClick={onToggle} className='md:hidden z-10 flex flex-col h-12 w-12 border-1 border-white rounded justify-center items-center group'>
+            <button
+      className="flex flex-col h-12 w-12 border-2 border-white rounded justify-center items-center group"
+      onClick={() => setNav(!nav)}
+    >
+      <div
+        className={`${genericHamburgerLine} ${
+          nav
+            ? "rotate-45 translate-y-[10px] opacity-50 group-hover:opacity-100"
+            : "opacity-50 group-hover:opacity-100"
+        }`}
+      />
+      <div
+        className={`${genericHamburgerLine} ${
+          nav ? "opacity-0" : "opacity-50 group-hover:opacity-100"
+        }`}
+      />
+      <div
+        className={`${genericHamburgerLine} ${
+          nav
+            ? "-rotate-45 -translate-y-[10px] opacity-50 group-hover:opacity-100"
+            : "opacity-50 group-hover:opacity-100"
+        }`}
+      />
+    </button>
         </div>
+        
          {/* mobile menu */}
         
             <ul className={ !nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center'}>
