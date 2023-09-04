@@ -8,14 +8,14 @@ import Work from './components/Work'
 
 function App() {
   return (
-    <>
+    <div className='h-screen py-0 my-0'>
       <Navbar />
       <Home />
       <About />
       <Skills />
       <Work />
       <Contact />
-    </>
+    </div>
   )
 }
 
